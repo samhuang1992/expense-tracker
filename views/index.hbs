@@ -1,26 +1,19 @@
-<div class="container" id="index-page">
-  {{!-- filter --}}
-  <div class="filter-wrapper d-flex justify-content-between align-items-center">
-    <div class="total-amount">總金額：{{totalAmount}}</div>
-    <form action="/" method="GET">
-      <div class="row align-items-center justify-content-end">
-        {{!-- category filter --}}
-        <select name="category" id="category" class="filter-item form-control">
-          <option value="all" selected>全部</option>
-          {{!-- {{#each categoryData}}
-          <option value="{{this.name}}" {{this.selected}}>{{this.name}}</option>
-          {{/each}} --}}
-        </select>
-        {{!-- date filter --}}
-        <input type="month" name="month" id="month" class="filter-item form-control" 
-        {{!-- sorting --}}
-        <select name="sort" id="sort" class="filter-item form-control">
-          <option value="date-asc">日期: 舊 - 新</option>
-          <option value="date-desc" >日期: 新 - 舊</option>
-          <option value="amount-asc" 金額: 小 - 大</option>
-          <option value="amount-desc" >金額: 大 - 小</option>
-        </select>
-        <button type="submit" class="btn btn-outline-secondary filter-btn">篩選</button>
-      </div>
-    </form>
+<div class="container">
+  <div class="filter-wrapper d-flex justify-content-center">
+    <form action="/new" method="GET">
+        <div class="row align-items-center justify-content-center mt-5">
+          <select type="select" class="form-control mt-2" id="category" name="category">
+            <option>選擇分類...</option>
+            <option>家居物業</option>
+            <option>交通出行</option>
+            <option>休閒娛樂</option>
+            <option>餐飲食品</option>
+            <option>其他</option>
+          </select>
+       </div>
+      <div class="total-amount mt-3">總金額：</div>
+        <button type="submit" class="btn btn-outline-block filter-btn mt-3">新增支出</button>
+      </form>
+    
   </div>
+</div>
