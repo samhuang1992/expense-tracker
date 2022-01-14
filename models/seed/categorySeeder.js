@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const Tracker = require('../tracker') //載入tracker model
+const categoryData = require('../seed/category.json').results
+const Category = require('../category')
 
 mongoose.connect('mongodb://localhost/expense-tracker')
 // 取得資料庫連線狀態
@@ -11,8 +12,10 @@ db.on('error', () => {
 // 連線成功
 db.once('open', () => {
   console.log('mongodb connected!')
-  for (let i = 0; i <10; i++) {
-    Tracker.create({ name: 'name-' + i})
-  }
-  console.log('Done') 
+  Category.create(categoryData)
+  .then(()=> {
+    console.log('categoryData Done') 
+    db.close()
+  })
+  .catch(err => console.log(err))
 })   
