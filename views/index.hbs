@@ -1,19 +1,20 @@
 <div class="container">
+  
   <div class="filter-wrapper d-flex justify-content-center">
-    <form action="/new" method="GET">
+    <form action="/" method="POST">
+    
         <div class="row align-items-center justify-content-center mt-5">
           <select type="select" class="form-control mt-2" id="category" name="category">
             <option>選擇分類...</option>
-            <option>家居物業</option>
-            <option>交通出行</option>
-            <option>休閒娛樂</option>
-            <option>餐飲食品</option>
-            <option>其他</option>
+            {{#each expense}}
+            <option>{{this.name}}</option>
+            {{/each}}
           </select>
        </div>
       <div class="total-amount mt-3">總金額：</div>
-        <button type="submit" class="btn btn-outline-block filter-btn mt-3">新增支出</button>
+      <a href="/record/new"type="submit" class="btn btn-primary mt-3">新增支出</a>
+          
       </form>
-    
   </div>
+
 </div>
