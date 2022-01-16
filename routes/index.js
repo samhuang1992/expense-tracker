@@ -5,10 +5,13 @@ const router = express.Router()
 const home = require('./modules/home')
 const record = require('./modules/record')
 const users = require('./modules/users')
+// 載入Middle
+const { authenticator } = require('../middleware/auth')
 
-router.use('/', home)
-router.use('/record', record)
+
+router.use('/record', authenticator, record)
 router.use('/users', users)
+router.use('/', authenticator, home)
 
 // 匯出路由
 module.exports = router
