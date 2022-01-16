@@ -14,8 +14,12 @@
 <header>
   <div class="container">
     <nav class="navbar nav bar-light bg-light">
-      <a class="navbar-brand" href="/">家庭記事本</a>
+      <a class="navbar-brand" href="/">{{#if isAuthenticated}}{{user.name}} の {{/if}}記事本</a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-inline">登出</a>
+      {{else}}
       <a href="/users/login" class="btn btn-inline">登入</a>
+      {{/if}}
     </nav>
   </div>
 </header>
