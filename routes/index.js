@@ -8,7 +8,7 @@ const user = require('./modules/user')
 
 router.use('/', home)
 router.use('/record', record)
-// router.use('/user', user)
+router.use('/user', user)
 
 // 匯出路由
 module.exports = router
