@@ -3,6 +3,7 @@ const router = express.Router()
 const passport = require('passport')
 
 const User = require('../../models/user')
+const bcrypt = require('bcrypt')
 
 // 登入頁
 router.get('/login', (req, res) => {
@@ -37,7 +38,6 @@ router.post('/register', (req, res) => {
             confirmPassword
     })        
   }
-
   User.findOne({ email })
     .then(user => { 
       if(user){
@@ -49,15 +49,17 @@ router.post('/register', (req, res) => {
                 password,
                 confirmPassword
         })
-      }else{  
-        return User.create({
+      }
+      return bcrypt 
+      .genSalt(10)
+      .then(salt => bcrypt.hash(password, salt))
+      .then(hash => User.create({
           name,
           email,
-          password
-        })
+          password: hash
+        }))
       .then(() => res.redirect('/'))
       .catch(err => console.log(err))      
-      }
     })
 })
 // 登出
