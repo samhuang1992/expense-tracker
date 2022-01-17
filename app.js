@@ -1,13 +1,17 @@
+// 如果執行環境不是在production就透過dotenv讀取.env資料
+if(process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const express = require('express')
 const session = require('express-session')
 const app = express()
-const PORT = '3000'
+const PORT = process.env.PORT
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const usePassport = require('./config/passport')
-
 const routes = require('./routes')
 
 require('./config/mongoose')
@@ -17,7 +21,7 @@ app.set('view engine', 'hbs')
 
 // use session
 app.use(session({
-  secret: 'MySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
