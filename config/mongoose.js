@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const MONGODB_URI = process.env.MONGODB_URI || 'http://localhost:3000/auth/facebook/callback'
+const MONGODB_URI = process.env.MONGODB_URI 
 mongoose.connect(MONGODB_URI)
 // 取得資料庫連線狀態
 const db = mongoose.connection
