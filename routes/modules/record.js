@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Category = require('../../models/category')
 const Record = require('../../models/record')
-
+const moment =require('moment')
 
 // new
 router.get('/new', (req, res) => {
@@ -30,9 +30,13 @@ router.get('/edit/:id', (req, res) => {
   // console.log(req)
   const userId = req.user._id
   const _id = req.params.id
-  Record.findById(_id, userId)
-    .lean()
-    .then(record => res.render('edit', {record}))
+  return Record.findOne({ _id, userId })
+      .lean()
+      .populate('category')
+      .then(record => {
+      record.date = moment(record.date).format("YYYY-MM-DD")
+      res.render("edit", { record })
+      })
     .catch(err => console.log(err))
 })
   

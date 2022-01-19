@@ -11,18 +11,18 @@
           </select>
        </div>
     </form>   
-      <div class="total-amount mt-3">總金額：</div>
+      <div class="total-amount mt-3">總金額：{{totalAmount}}</div>
         {{!-- new record loop--}}
         
-        <div>
+        <div class=" mt-4">
           {{#each expenses}}
           <li class="d-flex justify-content-between">
-            <p><i class="{{this.category.icon}}"></i></p>
+            <p><i class="{{this.icon}}"></i></p>
             <div>
-              <h3>{{this.name}}</h3>
+              <h3 class="mr-5">{{this.name}}</h3>
               <p>{{this.date}}</p>
             </div>
-            <span>{{this.amount}}</span>
+            <span class="mr-5">{{this.amount}}</span>
             <form action="/record/{{this._id}}?_method=DELETE" method="post">
             <a href="/record/edit/{{this._id}}" class="btn btn-primary mt-3">修改</a>
             <button type="submit" class="btn btn-primary mt-3">刪除</button>
