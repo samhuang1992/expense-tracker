@@ -1,38 +1,41 @@
-<div class="container d-flex align-items-center justify-content-center">
-  <div class="filter-wrapper ">
-    <form action="/" method="POST">
-        <div class="mt-5">
-          <select type="select" class="form-control mt-2" id="category" name="category">
-            <option value="家居物業">家居物業</option>
-            <option value="交通出行">交通出行</option>
-            <option value="休閒娛樂">休閒娛樂</option>
-            <option value="餐飲食品">餐飲食品</option>
-            <option value="其他">其他</option>
-          </select>
-       </div>
-    </form>   
-      <div class="total-amount mt-3">總金額：{{totalAmount}}</div>
-        {{!-- new record loop--}}
-        
-        <div class=" mt-4">
-          {{#each expenses}}
-          <li class="d-flex justify-content-between">
-            <p><i class="{{this.icon}}"></i></p>
-            <div>
-              <h3 class="mr-5">{{this.name}}</h3>
-              <p>{{this.date}}</p>
-            </div>
-            <span class="mr-5">{{this.amount}}</span>
-            <form action="/record/{{this._id}}?_method=DELETE" method="post">
-            <a href="/record/edit/{{this._id}}" class="btn btn-primary mt-3">修改</a>
-            <button type="submit" class="btn btn-primary mt-3">刪除</button>
-            </form>
-          </li>
-           {{/each}}
-          <a href="/record/new"type="submit" class="btn btn-primary mt-3">新增支出</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 m-auto">
+      <form action="/" method="POST">
+          <div class="mt-5">
+            <select type="select" class="form-control mt-2" id="category" name="category">
+              <option value="請選擇">請選擇</option>
+              <option value="家居物業">家居物業</option>
+              <option value="交通出行">交通出行</option>
+              <option value="休閒娛樂">休閒娛樂</option>
+              <option value="餐飲食品">餐飲食品</option>
+              <option value="其他">其他</option>
+            </select>
         </div>
+      </form>   
+        <h2 class="total-amount mt-3 d-flex justify-content-center">總金額：{{totalAmount}}</h2>
+          {{!-- new record loop--}}
+          <ul class="list-group" style="list-style-type:none;">
+            {{#each expenses}}
+            <div class="list-group-item">
+              <li class="col">
+                <i class="{{this.icon}}"></i>
+                  <p class="mr-5">{{this.name}}</p>
+                  <p>{{this.date}}</p>
+                  <div class="col-auto">
+                    <h2 class="mr-5">{{this.amount}}</h2>
+                    <form action="/record/{{this._id}}?_method=DELETE" method="post">
+                      <a href="/record/edit/{{this._id}}" class="btn btn-info mt-3">修改</a>
+                      <button type="submit" class="btn btn-danger mt-3" onclick="return confirm(`確定要刪除 {{ this.name }} 嗎？`)">刪除</button>
+                    </form>
+                  </div>
+              </li>
+            </div>
+            {{/each}}
+          </ul>
+          <a href="/record/new"type="submit" class="btn btn-success mt-3">新增支出</a>
+    </div>
   </div>
 </div>
-
 
 
