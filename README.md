@@ -1,7 +1,7 @@
 # 註冊頁面
-![]()
+![](https://github.com/samhuang1992/expense-tracker/blob/main/image/register.jpg)
 # 登入頁面
-![]()
+![](https://github.com/samhuang1992/expense-tracker/blob/main/image/login.jpg)
 
 # 登入後首頁
 ![]()
