@@ -31,32 +31,8 @@
            {{/each}}
           <a href="/record/new"type="submit" class="btn btn-primary mt-3">新增支出</a>
         </div>
-        {{!-- <ul class="list-group">
-      {{#each expenses}}
-      <div class="record mb-3">
-        <li class="list-group-item d-flex justify-content-between">
-          <div class="col-1 my-0  d-flex align-items-center" style="color:black">
-            <i class="{{ this.category.categoryIcon }} fa-4x"></i>
-          </div>
-          <div class="record-detail col-8 ml-5 mt-2 px-auto">
-            <h4 class="record-title font-weight-bold">{{ this.name }}</h4>
-            <p class="record-date font-weight-bold">{{ this.date }}</p>
-          </div>
-
-          <div class="record-amount col-3 d-flex align-items-center">
-            <p class="font-weight-bold"><span>{{ this.amount }}</span>元</p>
-          </div>
-
-          <div class="record-button col-4 d-flex justify-content-end align-items-center">
-            <a class="btn btn-info" href="/record/edit/{{ this._id}}" type="submit">修改</a>
-            <form action="/record/{{ this._id }}/?_method=POST" method="POST" class="ml-2">
-              <button class="btn btn-danger" type="submit">刪除</button>
-            </form>
-          </div>
-        </li>
-      </div>
-      {{/each}}
-    </ul> --}}
   </div>
 </div>
+
+
 
